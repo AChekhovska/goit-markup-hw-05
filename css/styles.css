@@ -5,6 +5,8 @@
     --btn-order-background-color: #2196F3;
     --btn-order-active-background-color: #188CE8;
     --section-order-background-color: #C4C4C4;
+    --overlay-activity-background-color: rgba(47, 48, 58, 0.8);
+    --overlay-background-color: rgba(0, 0, 0, 0.2);
     --main-logo-color: #000000;
     --primary-text-color: #757575;
     --title-text-color: #212121;
@@ -18,7 +20,8 @@
     --social-links-color: #AFB1B8;
     --primary-font: 'Roboto', sans-serif;
     --secondary-font: 'Raleway', sans-serif;
-    --button-font: inherit
+    --button-font: inherit;
+    --transition-dur-and-func: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 h1,
@@ -126,6 +129,18 @@ body {
     letter-spacing: 0.02em;
     text-align: left;
     text-decoration: none;
+    position: relative;
+}
+
+.link-navigation.current::after {
+    position: absolute;
+    content: "";
+    display: block;
+    height: 4px;
+    width: 100%;
+    border-radius: 2px;
+    background-color: var(--btn-order-background-color);
+    bottom: -1px;
 }
 
 .main-list-connection {
@@ -151,6 +166,7 @@ body {
     width: 16px;
     height: 12px;
     margin-right: 10px;
+    transition: fill var(--transition-dur-and-func);
 }
 
 .icon-phone {
@@ -158,6 +174,7 @@ body {
     width: 10px;
     height: 16px;
     margin-right: 10px;
+    transition: fill var(--transition-dur-and-func);
 }
 
 .icon-mail :hover,
@@ -188,6 +205,11 @@ body {
     display: flex;
     align-items: center;
     margin-right: 48px;
+    transition: color var(--transition-dur-and-func);
+}
+
+.list-navigation {
+    transition: color var(--transition-dur-and-func)
 }
 
 .current {
@@ -224,6 +246,7 @@ body {
     border: none;
     border-radius: 4px;
     min-width: 216px;
+    transition: background-color var(--transition-dur-and-func);
 }
 
 .button-order:hover,
@@ -238,7 +261,7 @@ body {
 }
 
 .section-order {
-    display: block;  
+    display: block;
     max-width: 1600px;
     margin-left: auto;
     margin-right: auto;
@@ -329,6 +352,7 @@ body {
 
 .cards-activity {
     flex-basis: calc((100% - 2 * 30px) / 3);
+    position: relative;
 }
 
 .activity {
@@ -341,6 +365,28 @@ body {
     margin-right: 400px;
     margin-left: 400px;
     margin-bottom: 50px;
+}
+
+.overlay-activity-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay-activity {
+    position: absolute;
+    width: 100%;
+    color: var(--accent-text-color);
+    background-color: var(--overlay-activity-background-color);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.14;
+    text-align: center;
+    text-transform: uppercase;
+    overflow: auto;
+    top: 224px;
+    padding: 27px 107px;
+    height: 70px;
 }
 
 .section-team {
@@ -408,7 +454,8 @@ body {
     width: 44px;
     border-radius: 50%;
     background-color: var(--main-background-color);
-    color: var(--social-links-color);    
+    color: var(--social-links-color);
+    transition: background-color var(--transition-dur-and-func), fill var(--transition-dur-and-func);
 }
 
 .social-link-item {
@@ -484,6 +531,7 @@ body {
     width: 170px;
     height: 92px;
     padding: 16px, 32px;
+    transition: color var(--transition-dur-and-func), border var(--transition-dur-and-func);
 }
 
 .clients-logo:hover,
@@ -538,6 +586,7 @@ body {
     font-weight: 400;
     line-height: 1.71;
     text-align: left;
+    transition: color var(--transition-dur-and-func);
 }
 
 .footer-list-connection:not(:last-child) {
@@ -587,6 +636,7 @@ body {
     border-radius: 50px;
     background-color: rgba(255, 255, 255, 0.1);
     color: var(--accent-text-color);
+    transition: background-color var(--transition-dur-and-func), fill var(--transition-dur-and-func);
 }
 
 .footer-social-links:hover,
@@ -637,6 +687,63 @@ body {
     margin-right: 70px;
 }
 
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--overlay-background-color);
+    z-index: 100;
+    transition: opacity var(--transition-dur-and-func), visibility var(--transition-dur-and-func);
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 528px;
+    height: 581px;
+    background-color: var(--main-background-color);
+    animation: animate-window 3000ms infinite 1000ms;
+}
+
+@keyframes animate-window {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.25);
+    }
+
+    100% {
+        transform: scale(1.5);
+    }
+}
+
+.modal-close-button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    padding: 0;
+}
+
+.backdrop.is-hidden {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+}
+
 /* Portfolio styles */
 
 .section-examples {
@@ -661,7 +768,8 @@ body {
     text-align: center;
     border: none;
     border-radius: 4px;
-    padding: 6px 22px;    
+    padding: 6px 22px;
+    transition: color var(--transition-dur-and-func), background-color var(--transition-dur-and-func), box-shadow var(--transition-dur-and-func);
 }
 
 .example-button:hover,
@@ -681,6 +789,34 @@ body {
 .example {
     background-color: var(--main-background-color);
     flex-basis: calc((100% - 2 * 30px) / 3);
+}
+
+.example-img {
+    position: relative;
+    overflow: hidden;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--btn-order-background-color);
+    color: var(--accent-text-color);
+    padding: 63px 24px;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.56;
+    text-align: left;
+    overflow: auto;
+    transform: translateY(100%);
+    transition: transform var(--transition-dur-and-func);
+}
+
+.example-link:hover .overlay,
+.example-link:focus .overlay {
+    transform: translateY(0%);
 }
 
 .example-card {
@@ -708,8 +844,9 @@ body {
     color: var(--primary-text-color);
 }
 
-.example-link{
+.example-link {
     display: block;
+    transition: box-shadow var(--transition-dur-and-func);
 }
 
 .example-link:hover,

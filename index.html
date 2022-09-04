@@ -52,7 +52,7 @@
         <section class="section-order">
             <div class="container">
                 <h1 class="main-title">Ефективні рішення для вашого бізнесу</h1>
-                <button type="button" class="button-order page-buttons">Замовити послугу</button>
+                <button type="button" class="button-order page-buttons" data-modal-open>Замовити послугу</button>
             </div>
         </section>
 
@@ -109,11 +109,22 @@
                 <ul class="types-activity">
                     <li class="list cards-activity"><img src="images/pic.jpg" alt="Набір тексту на клавіатурі"
                             width="370" height="294" />
+                        <div class="overlay-activity-box">
+                            <h3 class="overlay-activity">Десктопні додатки</h3>
+                        </div>
                     </li>
                     <li class="list cards-activity"><img src="images/pic2.jpg"
-                            alt="Зображення мобільного телефона на екрані ноутбука" width="370" height="294" /></li>
+                            alt="Зображення мобільного телефона на екрані ноутбука" width="370" height="294" />
+                        <div class="overlay-activity-box">
+                            <h3 class="overlay-activity">Мобільні додатки</h3>
+                        </div>
+                    </li>
                     <li class="list cards-activity"><img src="images/pic3.jpg"
-                            alt="Зображення спектру кольорів на екрані планшета" width="370" height="294" /></li>
+                            alt="Зображення спектру кольорів на екрані планшета" width="370" height="294" />
+                        <div class="overlay-activity-box">
+                            <h3 class="overlay-activity">Дизайнерські рішення</h3>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </section>
@@ -285,8 +296,7 @@
                     </li>
                     <li class="clients-logo-items link list">
                         <a href="#" class="clients-logo">
-                            <svg aria-label="Логотип форми бескінечності" class="logo-infinity" width="106"
-                                height="60">
+                            <svg aria-label="Логотип форми бескінечності" class="logo-infinity" width="106" height="60">
                                 <use href="./images/sprite.svg#icon-logo3"></use>
                             </svg>
                         </a>
@@ -365,6 +375,15 @@
             </div>
         </div>
     </footer>
+    <div class="backdrop is-hidden" data-modal>
+        <div class="modal">
+            <button type="button" class="modal-close-button" data-modal-close>
+                <svg aria-label="Хрестик закриття форми" class="icon-close" width="18" height="18">
+                    <use href="./images/sprite.svg#icon-close"></use>
+                </svg>
+            </button>
+        </div>
+    </div>
     <script src="./js/modal.js"></script>
 </body>
 
