@@ -336,8 +336,7 @@ body {
     font-size: 14px;
     font-weight: 400;
     line-height: 1.7;
-    text-align: left;
-    text-transform: uppercase;
+    text-align: left;    
 }
 
 .section-activity {
@@ -367,13 +366,10 @@ body {
     margin-bottom: 50px;
 }
 
-.overlay-activity-box {
+.overlay-activity {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.overlay-activity {
     position: absolute;
     width: 100%;
     color: var(--accent-text-color);
@@ -384,8 +380,7 @@ body {
     text-align: center;
     text-transform: uppercase;
     overflow: auto;
-    top: 224px;
-    padding: 27px 107px;
+    top: 224px;    
     height: 70px;
 }
 
@@ -705,22 +700,7 @@ body {
     transform: translate(-50%, -50%);
     width: 528px;
     height: 581px;
-    background-color: var(--main-background-color);
-    animation: animate-window 3000ms infinite 1000ms;
-}
-
-@keyframes animate-window {
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.25);
-    }
-
-    100% {
-        transform: scale(1.5);
-    }
+    background-color: var(--main-background-color);    
 }
 
 .modal-close-button {
